@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Explore Tamil Nadu – temples, hills, beaches, waterfalls and more." />
+  <title>Explore Tamil Nadu – Travel Showcase</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+</head>
+<body>
+
+  <!-- Scroll Progress -->
+  <div id="scrollProgress" class="scroll-progress"></div>
+
+  <!-- Loader -->
+  <div id="loader" class="loader">
+    <div class="loader-ring"></div>
+    <p>Exploring Tamil Nadu…</p>
+  </div>
+
+  <!-- ══ NAVBAR ══════════════════════════════════ -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="#home" class="logo"><i class="fa-solid fa-landmark"></i> Explore <strong>Tamil Nadu</strong></a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home"         class="nav-link active">Home</a></li>
+        <li><a href="#destinations" class="nav-link">Destinations</a></li>
+        <li><a href="#gallery"      class="nav-link">Gallery</a></li>
+        <li><a href="#categories"   class="nav-link">Categories</a></li>
+        <li><a href="#festivals"    class="nav-link">Festivals</a></li>
+        <li><a href="#about"        class="nav-link">About</a></li>
+        <li><a href="#contact"      class="nav-link">Contact</a></li>
+      </ul>
+
+      <div class="nav-right">
+        <div class="nav-search-box">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" id="navSearch" placeholder="Search destinations…" autocomplete="off" />
+          <div class="nav-dropdown" id="navDropdown"></div>
+        </div>
+        <button id="themeBtn" class="icon-btn" aria-label="Toggle theme"><i class="fa-solid fa-moon"></i></button>
+        <button id="favBtn"   class="icon-btn fav-trigger" aria-label="Favourites">
+          <i class="fa-solid fa-heart"></i>
+          <span id="favBadge" class="badge">0</span>
+        </button>
+        <button id="hamburger" class="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ══ HERO SLIDER ═════════════════════════════ -->
+  <section id="home" class="hero">
+    <div id="slides" class="slides"></div>
+    <button id="heroPrev" class="hero-btn left"  aria-label="Previous"><i class="fa-solid fa-chevron-left"></i></button>
+    <button id="heroNext" class="hero-btn right" aria-label="Next"><i class="fa-solid fa-chevron-right"></i></button>
+    <div id="heroDots" class="hero-dots"></div>
+    <div class="hero-bar"><div id="heroBar" class="hero-bar-fill"></div></div>
+  </section>
+
+  <!-- ══ STATS ═══════════════════════════════════ -->
+  <div class="stats-strip">
+    <div class="stat"><i class="fa-solid fa-location-dot"></i><div><b>10+</b><span>Destinations</span></div></div>
+    <div class="stat"><i class="fa-solid fa-star"></i>        <div><b>4.8★</b><span>Avg Rating</span></div></div>
+    <div class="stat"><i class="fa-solid fa-users"></i>       <div><b>2M+</b><span>Visitors/Year</span></div></div>
+    <div class="stat"><i class="fa-solid fa-camera"></i>      <div><b>500+</b><span>Photo Spots</span></div></div>
+  </div>
+
+  <!-- ══ DESTINATIONS ════════════════════════════ -->
+  <section id="destinations" class="sec">
+    <div class="sec-head">
+      <h2>Explore <span class="hl">Destinations</span></h2>
+      <p>From misty hills to sacred temples – discover Tamil Nadu's finest</p>
+    </div>
+
+    <div class="filter-row">
+      <div class="search-field">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" id="destSearch" placeholder="Search by name, district or category…" />
+      </div>
+      <div class="chips" id="chips">
+        <button class="chip active" data-cat="all">All</button>
+        <button class="chip" data-cat="Hill Stations"><i class="fa-solid fa-mountain"></i> Hills</button>
+        <button class="chip" data-cat="Beaches"><i class="fa-solid fa-umbrella-beach"></i> Beaches</button>
+        <button class="chip" data-cat="Temples"><i class="fa-solid fa-place-of-worship"></i> Temples</button>
+        <button class="chip" data-cat="Waterfalls"><i class="fa-solid fa-water"></i> Waterfalls</button>
+        <button class="chip" data-cat="Wildlife"><i class="fa-solid fa-paw"></i> Wildlife</button>
+        <button class="chip" data-cat="Heritage"><i class="fa-solid fa-monument"></i> Heritage</button>
+        <button class="chip" data-cat="Nature"><i class="fa-solid fa-leaf"></i> Nature</button>
+      </div>
+    </div>
+
+    <div id="destGrid" class="card-grid"></div>
+    <div id="noResults" class="no-results hidden">
+      <i class="fa-solid fa-magnifying-glass"></i><p>No destinations found.</p>
+    </div>
+  </section>
+
+  <!-- ══ FAVOURITES ══════════════════════════════ -->
+  <section id="favSection" class="sec hidden">
+    <div class="sec-head">
+      <h2>My <span class="hl">Favourites</span></h2>
+      <p>Your saved destinations</p>
+    </div>
+    <div id="favGrid" class="card-grid"></div>
+  </section>
+
+  <!-- ══ GALLERY ═════════════════════════════════ -->
+  <section id="gallery" class="sec alt-bg">
+    <div class="sec-head">
+      <h2>Tamil Nadu <span class="hl">Gallery</span></h2>
+      <p>A visual journey through the land of temples and nature</p>
+    </div>
+    <div id="galleryGrid" class="gallery-grid"></div>
+  </section>
+
+  <!-- ══ CATEGORIES ══════════════════════════════ -->
+  <section id="categories" class="sec">
+    <div class="sec-head">
+      <h2>Browse by <span class="hl">Category</span></h2>
+      <p>Find your perfect Tamil Nadu experience</p>
+    </div>
+    <div id="catGrid" class="cat-grid"></div>
+  </section>
+
+  <!-- ══ FESTIVALS ═══════════════════════════════ -->
+  <section id="festivals" class="sec alt-bg">
+    <div class="sec-head">
+      <h2>Festivals &amp; <span class="hl">Culture</span></h2>
+      <p>Celebrate the vibrant spirit of Tamil Nadu</p>
+    </div>
+    <div id="festGrid" class="fest-grid"></div>
+  </section>
+
+  <!-- ══ FOODS ════════════════════════════════════ -->
+  <section id="foods" class="sec">
+    <div class="sec-head">
+      <h2>Famous <span class="hl">Foods</span></h2>
+      <p>Savour the authentic flavours of Tamil Nadu</p>
+    </div>
+    <div id="foodGrid" class="food-grid"></div>
+  </section>
+
+  <!-- ══ TRAVEL TIPS ══════════════════════════════ -->
+  <section id="tips" class="sec alt-bg">
+    <div class="sec-head">
+      <h2>Travel <span class="hl">Tips</span></h2>
+      <p>Make the most of your Tamil Nadu journey</p>
+    </div>
+    <div id="tipsGrid" class="tips-grid"></div>
+  </section>
+
+  <!-- ══ ABOUT ════════════════════════════════════ -->
+  <section id="about" class="sec">
+    <div class="about-wrap">
+      <div class="about-text">
+        <h2>About <span class="hl">Tamil Nadu</span></h2>
+        <p>Tamil Nadu, located on the southeastern tip of India, is a land of ancient Dravidian culture, magnificent temples, stunning coastlines, and lush hill stations. With a history spanning over 2,000 years, it is home to some of India's most iconic landmarks.</p>
+        <p>From the UNESCO World Heritage temples of Mahabalipuram and Thanjavur to the mist-covered hills of Ooty and Kodaikanal, Tamil Nadu offers an unparalleled diversity of experiences.</p>
+        <div class="about-grid">
+          <div class="ab"><i class="fa-solid fa-calendar-days"></i><span>Best Season: Oct – Mar</span></div>
+          <div class="ab"><i class="fa-solid fa-language"></i><span>Language: Tamil</span></div>
+          <div class="ab"><i class="fa-solid fa-plane-departure"></i><span>Capital: Chennai</span></div>
+          <div class="ab"><i class="fa-solid fa-temperature-half"></i><span>Climate: Tropical</span></div>
+        </div>
+      </div>
+      <div class="about-badge-wrap">
+        <div class="about-badge">
+          <i class="fa-solid fa-landmark fa-3x"></i>
+          <h3>Land of Temples &amp; Nature</h3>
+          <p>2,000+ years of living history</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ NEWSLETTER ════════════════════════════════ -->
+  <section class="nl-section">
+    <div class="nl-box">
+      <i class="fa-solid fa-envelope-open-text fa-2x"></i>
+      <h3>Stay Updated with Tamil Nadu Travel</h3>
+      <p>Get the latest travel guides, festival alerts and exclusive deals.</p>
+      <form id="nlForm" class="nl-form" novalidate>
+        <input type="email" id="nlEmail" placeholder="Enter your email address" required />
+        <button type="submit">Subscribe <i class="fa-solid fa-paper-plane"></i></button>
+      </form>
+      <p id="nlMsg" class="nl-msg hidden"><i class="fa-solid fa-circle-check"></i> Thank you for subscribing!</p>
+    </div>
+  </section>
+
+  <!-- ══ CONTACT ══════════════════════════════════ -->
+  <section id="contact" class="sec">
+    <div class="sec-head">
+      <h2>Get In <span class="hl">Touch</span></h2>
+      <p>We'd love to help plan your Tamil Nadu adventure</p>
+    </div>
+    <div class="contact-wrap">
+      <div class="contact-info">
+        <div class="ci"><i class="fa-solid fa-location-dot"></i><div><b>Address</b><span>Pudukkottai, Chennai – 622 507</span></div></div>
+        <div class="ci"><i class="fa-solid fa-phone"></i>        <div><b>Phone</b><span>+91 8825766907</span></div></div>
+        <div class="ci"><i class="fa-solid fa-envelope"></i>     <div><b>Email</b><span>theresathomas096@gmail.com</span></div></div>
+        <div class="ci"><i class="fa-solid fa-clock"></i>        <div><b>Hours</b><span>Mon – Sat, 9 AM – 6 PM</span></div></div>
+      </div>
+      <form id="contactForm" class="contact-form" novalidate>
+        <input  type="text"  placeholder="Your Name"    required />
+        <input  type="email" placeholder="Your Email"   required />
+        <input  type="text"  placeholder="Subject" />
+        <textarea rows="5"   placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message <i class="fa-solid fa-paper-plane"></i></button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ══ FOOTER ═══════════════════════════════════ -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="fc brand">
+        <h4><i class="fa-solid fa-landmark"></i> Explore Tamil Nadu</h4>
+        <p>Your gateway to the rich culture, heritage, and natural beauty of Tamil Nadu, India.</p>
+        <div class="socials">
+          <a href="https://wa.me/+918825766907" aria-label="Whatsapp"><i class="fa-brands fa-whatsapp"></i></a>
+          <a href="https://www.instagram.com/pearly_girl_angel" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://github.com/Theresa-Angel" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/theresaangel-thomas/" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+        </div>
+      </div>
+      <div class="fc">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#destinations">Destinations</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="fc">
+        <h4>Top Destinations</h4>
+        <ul>
+          <li><a href="#destinations">Ooty</a></li>
+          <li><a href="#destinations">Kodaikanal</a></li>
+          <li><a href="#destinations">Kanyakumari</a></li>
+          <li><a href="#destinations">Mahabalipuram</a></li>
+          <li><a href="#destinations">Madurai</a></li>
+        </ul>
+      </div>
+      <div class="fc">
+        <h4>Contact</h4>
+        <p><i class="fa-solid fa-location-dot"></i> Pudukkottai, Tamil Nadu</p>
+        <p><i class="fa-solid fa-phone"></i> +91 8825766907</p>
+        <p><i class="fa-solid fa-envelope"></i> theresathomas096@gmail.com</p>
+      </div>
+    </div>
+    <div class="footer-btm">
+      <p>&copy; 2026 Explore Tamil Nadu · Crafted with <i class="fa-solid fa-heart" style="color:#e74c3c"></i> for Tamil Nadu Tourism</p>
+    </div>
+  </footer>
+
+  <!-- ══ DESTINATION MODAL ═════════════════════════ -->
+  <div id="modalOverlay" class="modal-overlay hidden">
+    <div id="modal" class="modal">
+      <button id="modalClose" class="modal-close"><i class="fa-solid fa-xmark"></i></button>
+      <div id="modalBody" class="modal-body"></div>
+    </div>
+  </div>
+
+  <!-- ══ LIGHTBOX ══════════════════════════════════ -->
+  <div id="lightbox" class="lightbox hidden">
+    <button id="lbClose" class="lb-btn close-btn"><i class="fa-solid fa-xmark"></i></button>
+    <button id="lbPrev"  class="lb-btn prev-btn"><i class="fa-solid fa-chevron-left"></i></button>
+    <button id="lbNext"  class="lb-btn next-btn"><i class="fa-solid fa-chevron-right"></i></button>
+    <img id="lbImg" src="" alt="Gallery" />
+    <p id="lbCaption" class="lb-caption"></p>
+  </div>
+
+  <!-- ══ SCROLL TOP ════════════════════════════════ -->
+  <button id="scrollTop" class="scroll-top hidden"><i class="fa-solid fa-arrow-up"></i></button>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
